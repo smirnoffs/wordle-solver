@@ -1,4 +1,5 @@
 from collections import Counter
+import sys
 
 
 with open("words_alpha.txt") as f:
@@ -25,15 +26,16 @@ for _ in range(6):
         answer = input(f"Is the letter {letter} present in word? Letter {letter}: ")
         match answer:
             case "0":  # letter not in the word
-                candidates = {word for word in candidates.items() if letter not in word}
+                candidates = {word for word in candidates if letter not in word}
             case "1":  # letter in the word, wrong position
                 candidates = {
-                    word
-                    for word in candidates.items()
-                    if letter in word and word[i] != letter
+                    word for word in candidates if letter in word and word[i] != letter
                 }
             case "2":  # letter in the word, right position
-                candidates = {word for word in candidates.items() if word[i] == letter}
+                candidates = {word for word in candidates if word[i] == letter}
+            case _:
+                print("Wrong input. Exiting...")
+                sys.exit(1)
     print("Top candidates:", ", ".join(list(candidates)[:30]))
     print(f"number of candidates left={len(candidates)}")
     if len(candidates) < 2:
