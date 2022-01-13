@@ -7,7 +7,7 @@ with open("words_alpha.txt") as f:
 letter_cnt = Counter()
 five_letter_candidates = set()
 for w in words:
-    if len(w) == 5 and len(set(w)) == 5:
+    if len(w)==5:
         letter_cnt.update(set(w))
         five_letter_candidates.add(w)
 candidates_weighted: dict[int, str] = {
