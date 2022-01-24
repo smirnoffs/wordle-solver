@@ -48,3 +48,6 @@ Is the letter r present in word? Letter r: 2
 Top candidates: favor
 number of candidates left=1
 ```
+
+24.01.2022
+Today the word was `knoll` and the solver didn't work!!! (╯°□°）╯︵ ┻━┻
