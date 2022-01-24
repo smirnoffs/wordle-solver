@@ -2,16 +2,16 @@ from collections import Counter
 import sys
 
 
-with open("words_alpha.txt") as f:
-    words = f.read().splitlines()
 letter_cnt = Counter()
-five_letter_candidates = set()
-for w in words:
-    if len(w)==5:
-        letter_cnt.update(set(w))
-        five_letter_candidates.add(w)
+words = []
+with open("dictionary.txt") as f:
+    for w in f:
+        word=w.strip()
+        letter_cnt.update(set(word))
+        words.append(word)
+print(len(words))
 candidates_weighted: dict[int, str] = {
-    w: sum(letter_cnt[c] for c in w) for w in five_letter_candidates
+    w: sum(letter_cnt[c] for c in w) for w in words
 }
 candidates_weighted = dict(
     sorted(candidates_weighted.items(), key=lambda x: x[1], reverse=True)
